@@ -1,0 +1,27 @@
+{
+  "keywords": [
+    {
+      "id": "fbe6cfb9",
+      "word": "Try",
+      "whole_word": true,
+      "case_sensitive": false,
+      "severity": "high",
+      "delete_message": true
+    }
+  ],
+  "link_detection": {
+    "enabled": true,
+    "severity": "low",
+    "delete_message": false,
+    "whitelist_domains": []
+  },
+  "load_rules": [
+    {
+      "id": "73e51509",
+      "scope": "user",
+      "max_messages": 6,
+      "window_seconds": 8,
+      "severity": "medium"
+    }
+  ]
+}
