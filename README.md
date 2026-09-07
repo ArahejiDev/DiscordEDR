@@ -79,6 +79,8 @@ discord-edr/
   sqlite3 data/edr.db "SELECT * FROM alerts ORDER BY id DESC LIMIT 20;"
   ```
 
+![Dashboard screenshot](screenshots/mainscreen.png)
+
 ## Running the graphical environment (desktop panel)
 
 The graphical panel (`desktop_app/`) is built with **Tkinter** (bundled
