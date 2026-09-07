@@ -79,6 +79,68 @@ discord-edr/
   sqlite3 data/edr.db "SELECT * FROM alerts ORDER BY id DESC LIMIT 20;"
   ```
 
+## Running the graphical environment (desktop panel)
+
+The graphical panel (`desktop_app/`) is built with **Tkinter** (bundled
+with Python, nothing extra to install on Windows/Mac) and **matplotlib**
+for the chart on the Analytics tab. Opening the panel automatically starts
+the bot in the background — there's no need to run the bot separately.
+
+### Prerequisites
+
+- Have completed steps 1–3 of [Installation](#installation)
+  (dependencies installed and `.env` with your `DISCORD_TOKEN`).
+- On **Linux**, Tkinter may not come preinstalled with Python. If you see
+  an error like `ModuleNotFoundError: No module named 'tkinter'` on
+  startup, install it with:
+  ```bash
+  sudo apt install python3-tk
+  ```
+- Activate your virtual environment if you're using one:
+  ```bash
+  source venv/bin/activate        # on Windows: venv\Scripts\activate
+  ```
+
+### Launching the panel
+
+From the project root, either of these two commands opens the graphical
+interface:
+
+```bash
+python run_app.py
+```
+
+or, equivalently, calling the panel's module directly:
+
+```bash
+python -m desktop_app.app
+```
+
+Both do the same thing: they open the panel window and, as soon as it
+opens, it starts the Discord bot on a background thread (see
+`desktop_app/bot_runner.py`). The bot's connection status ("Connecting...",
+"Connected as...", or an error if the token is missing) is shown in the
+bottom-right corner of the status bar.
+
+If you'd rather run **only the bot**, without opening any window (for
+example on a server with no graphical environment), use instead:
+
+```bash
+python -m bot.main
+```
+
+### Closing the panel
+
+Closing the window (❌) stops the bot cleanly before exiting — there's no
+need to kill the process manually.
+
+### Packaging as an executable (.exe)
+
+`run_app.py` is the same file intended to be packaged with PyInstaller to
+produce a single double-click `.exe` (see `docs/BUILD_EXE.md` if it exists
+in your copy of the project), so the graphical environment can be
+distributed without whoever uses it having to install Python.
+
 ## Desktop panel
 
 Besides the bot, the project includes a desktop dashboard (`desktop_app/`)
